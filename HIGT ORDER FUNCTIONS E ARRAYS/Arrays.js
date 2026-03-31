@@ -12,19 +12,41 @@ const personagens = [
 
 // -----------------------------------------------------------------------------
 // Map
-const nomes = personagens.map(function (personagem) {
+const nomesFor = []
+for (let i = 0; i < personagens.length; i++) {
+  const personagem = personagens[i]
+  nomesFor.push(personagem.nome)
+}
+
+// map
+const nomesMap = personagens.map(function (personagem) {
   return personagem.nome
 })
 
 // ------------------------------------------------------------------------------
 // Filter
-const orcs = personagens.filter(function (personagem) {
+const orcsFor = []
+for (let i = 0; i < personagens.length; i++) {
+  const personagem = personagens[i]
+  if (personagem.raca === "Orc") {
+    orcsFor.push(personagem)
+  }
+}
+
+// filter
+const orcsFilter = personagens.filter(function (personagem) {
   return personagem.raca === "Orc"
 })
 
 // ------------------------------------------------------------------------------
 // Reduce
-const nivelTotal = personagens.reduce(function (acumulador, personagem) {
+let nivelTotalFor = 0
+for (let i = 0; i < personagens.length; i++) {
+  nivelTotalFor += personagens[i].nivel
+}
+
+// reduce
+const nivelTotalReduce = personagens.reduce(function (acumulador, personagem) {
   return acumulador + personagem.nivel
 }, 0)
 
@@ -45,10 +67,16 @@ personagens.sort(function (a, b) {
 
 // --------------------------------------------------------------------------
 // Resultados
-console.log(nomes)
-console.log(orcs)
-console.log(nivelTotal)
-console.log(racas)
-console.log(personagens)
+console.log("nomes (for):", nomesFor)
+console.log("nomes (map):", nomesMap)
 
-// -------------------------------------------------------------------------
+console.log("orcs (for):", orcsFor)
+console.log("orcs (filter):", orcsFilter)
+
+console.log("nivel total (for):", nivelTotalFor)
+console.log("nivel total (reduce):", nivelTotalReduce)
+
+console.log("raças:", racas)
+console.log("ordenado:", personagens)
+
+// ---------------------------------------------------------------------------
